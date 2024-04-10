@@ -62,7 +62,7 @@ public class BigInt {
     public void minus(String value) {
         value = value.replace(" ", "");
 
-        if ((this.graterValue(value, this.value) == 1 || this.graterValue(value, this.value) == 2) && isMirror(value, this.value)) {
+        if ((this.greaterValue(value, this.value) == 1 || this.greaterValue(value, this.value) == 2) && isMirror(value, this.value)) {
             this.value = "0";
             return;
 
@@ -79,7 +79,7 @@ public class BigInt {
 
         if (this.value.charAt(0) != '-' && value.charAt(0) != '-') {
 
-            negativeMark = this.graterValue(this.value, value) != 1;
+            negativeMark = this.greaterValue(this.value, value) != 1;
         } else {
 
             if (minusValue.charAt(0) == '-') {
@@ -91,7 +91,7 @@ public class BigInt {
             }
         }
 
-        if (graterValue(currentValue, minusValue) == 1) {
+        if (greaterValue(currentValue, minusValue) == 1) {
             currentValue = minusValue;
             minusValue = this.value;
             negativeMark = false;
@@ -253,7 +253,7 @@ public class BigInt {
     }
 
     public void minus(BigInt value) {
-        if ((this.graterValue(value, this) == 1 || this.graterValue(value, this) == 2) && isMirror(value, this)) {
+        if ((this.greaterValue(value, this) == 1 || this.greaterValue(value, this) == 2) && isMirror(value, this)) {
             this.value = "0";
             return;
 
@@ -272,7 +272,7 @@ public class BigInt {
 
         if (this.value.charAt(0) != '-' && value.getValue().charAt(0) != '-') {
 
-            negativeMark = this.graterValue(this.value, value.getValue()) != 1;
+            negativeMark = this.greaterValue(this.value, value.getValue()) != 1;
         } else {
 
             if (minusValue.charAt(0) == '-') {
@@ -284,7 +284,7 @@ public class BigInt {
             }
         }
 
-        if (graterValue(currentValue, minusValue) == 1) {
+        if (greaterValue(currentValue, minusValue) == 1) {
             currentValue = minusValue;
             minusValue = this.value;
             negativeMark = false;
@@ -487,7 +487,7 @@ public class BigInt {
         }
         String addValue, currentValue;
 
-        if (graterValue(this.value, value) == 1) {
+        if (greaterValue(this.value, value) == 1) {
             addValue = this.value;
             currentValue = value;
         } else {
@@ -635,7 +635,7 @@ public class BigInt {
         }
         String addValue, currentValue;
 
-        if (graterValue(this, value) == 1) {
+        if (greaterValue(this, value) == 1) {
             addValue = this.value;
             currentValue = value.getValue();
         } else {
@@ -916,11 +916,11 @@ public class BigInt {
 
         BigInt currentTemp = new BigInt("0");
 
-        while (currentValue.graterValue(target.value, currentValue.value) == 1) {
+        while (currentValue.greaterValue(target.value, currentValue.value) == 1) {
             currentTemp.setValue(currentValue.getValue());
             currentValue.add(divideValue10000);
 
-            if (currentValue.graterValue(target.value, currentValue.value) == 1) {
+            if (currentValue.greaterValue(target.value, currentValue.value) == 1) {
                 wholeCount.add("10000");
             } else {
                 currentValue.setValue(currentTemp.getValue());
@@ -929,11 +929,11 @@ public class BigInt {
         }
         currentTemp = new BigInt("0");
 
-        while (currentValue.graterValue(target.value, currentValue.value) == 1) {
+        while (currentValue.greaterValue(target.value, currentValue.value) == 1) {
             currentTemp.setValue(currentValue.getValue());
             currentValue.add(divideValue1000);
 
-            if (currentValue.graterValue(target.value, currentValue.value) == 1) {
+            if (currentValue.greaterValue(target.value, currentValue.value) == 1) {
                 wholeCount.add("1000");
             } else {
                 currentValue.setValue(currentTemp.getValue());
@@ -942,11 +942,11 @@ public class BigInt {
         }
 
 
-        while (currentValue.graterValue(target.value, currentValue.value) == 1) {
+        while (currentValue.greaterValue(target.value, currentValue.value) == 1) {
             currentTemp.setValue(currentValue.getValue());
             currentValue.add(divideValue100);
 
-            if (currentValue.graterValue(target.value, currentValue.value) == 1) {
+            if (currentValue.greaterValue(target.value, currentValue.value) == 1) {
                 wholeCount.add("100");
             } else {
                 currentValue.setValue(currentTemp.getValue());
@@ -955,11 +955,11 @@ public class BigInt {
         }
 
 
-        while (currentValue.graterValue(target.value, currentValue.value) == 1) {
+        while (currentValue.greaterValue(target.value, currentValue.value) == 1) {
             currentTemp.setValue(currentValue.getValue());
             currentValue.add(divideValue10);
 
-            if (currentValue.graterValue(target.value, currentValue.value) == 1) {
+            if (currentValue.greaterValue(target.value, currentValue.value) == 1) {
                 wholeCount.add("10");
             } else {
                 currentValue.setValue(currentTemp.getValue());
@@ -968,11 +968,11 @@ public class BigInt {
         }
 
 
-        while (currentValue.graterValue(target.value, currentValue.value) == 1) {
+        while (currentValue.greaterValue(target.value, currentValue.value) == 1) {
             currentTemp.setValue(currentValue.getValue());
             currentValue.add(divideValue);
 
-            if (currentValue.graterValue(target.value, currentValue.value) == 1 || currentValue.graterValue(target.value, currentValue.value) == 0) {
+            if (currentValue.greaterValue(target.value, currentValue.value) == 1 || currentValue.greaterValue(target.value, currentValue.value) == 0) {
                 wholeCount.add("1");
             } else {
                 currentValue.setValue(currentTemp.getValue());
@@ -1009,7 +1009,7 @@ public class BigInt {
         return this.value;
     }
 
-    public int graterValue(BigInt bigInt1, BigInt bigInt2) {
+    public int greaterValue(BigInt bigInt1, BigInt bigInt2) {
         boolean negativeMark = false;
 
         if (bigInt1.value.charAt(0) == '-' && bigInt2.value.charAt(0) != '-') {
@@ -1063,7 +1063,7 @@ public class BigInt {
 
     }
 
-    public int graterValue(String bigInt1, String bigInt2) {
+    public int greaterValue(String bigInt1, String bigInt2) {
 
         boolean negativeMark = false;
 

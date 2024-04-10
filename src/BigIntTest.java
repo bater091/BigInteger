@@ -1,9 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BigIntTest {
@@ -204,47 +200,47 @@ class BigIntTest {
     void graterValue() {
         BigInt num1 = new BigInt("1");
         BigInt num2 = new BigInt("99999999999999999999999999");
-        assertEquals(2, num1.graterValue(num1,num2));
+        assertEquals(2, num1.greaterValue(num1,num2));
 
         num1 = new BigInt("-1");
         num2 = new BigInt("99999999999999999999999999");
-        assertEquals(2, num1.graterValue(num1,num2));
+        assertEquals(2, num1.greaterValue(num1,num2));
 
         num1 = new BigInt("1");
         num2 = new BigInt("-99999999999999999999999999");
-        assertEquals(1, num1.graterValue(num1,num2));
+        assertEquals(1, num1.greaterValue(num1,num2));
 
         num1 = new BigInt("-1");
         num2 = new BigInt("-99999999999999999999999999");
-        assertEquals(1, num1.graterValue(num1,num2));
+        assertEquals(1, num1.greaterValue(num1,num2));
 
         num1 = new BigInt("1");
         num2 = new BigInt("1");
-        assertEquals(0, num1.graterValue(num1,num2));
+        assertEquals(0, num1.greaterValue(num1,num2));
 
         num1 = new BigInt("-1");
         num2 = new BigInt("-1");
-        assertEquals(0, num1.graterValue(num1,num2));
+        assertEquals(0, num1.greaterValue(num1,num2));
 
         num1 = new BigInt("8679549836875975384789235798234");
         num2 = new BigInt("98537348935479834985987");
-        assertEquals(1, num1.graterValue(num1,num2));
+        assertEquals(1, num1.greaterValue(num1,num2));
 
         num1 = new BigInt("8679549836875975384789235798234");
         num2 = new BigInt("8679549836875975384789235798234");
-        assertEquals(0, num1.graterValue(num1,num2));
+        assertEquals(0, num1.greaterValue(num1,num2));
 
         num1 = new BigInt("8679549836875975384789235798234");
         num2 = new BigInt("8679549836875975384789235798234");
-        assertEquals(2, num1.graterValue("1","2"));
+        assertEquals(2, num1.greaterValue("1","2"));
 
         num1 = new BigInt("8679549836875975384789235798234");
         num2 = new BigInt("0");
-        assertEquals(1, num1.graterValue(num1,num2));
+        assertEquals(1, num1.greaterValue(num1,num2));
 
         num1 = new BigInt("0");
         num2 = new BigInt("8679549836875975384789235798234");
-        assertEquals(2, num1.graterValue(num1,num2));
+        assertEquals(2, num1.greaterValue(num1,num2));
     }
 
 
@@ -346,6 +342,12 @@ class BigIntTest {
        num1 = new BigInt("6859746493536534936534956");
        num2 = new BigInt("5423655346545463");
        expectedSum1 = new BigInt("1264782891");
+       num1.divide(num2);
+       assertEquals(expectedSum1.getValue(),num1.getValue());
+
+       num1 = new BigInt("123");
+       num2 = new BigInt("321");
+       expectedSum1 = new BigInt("0");
        num1.divide(num2);
        assertEquals(expectedSum1.getValue(),num1.getValue());
 
